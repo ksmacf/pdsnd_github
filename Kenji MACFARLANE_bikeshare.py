@@ -129,17 +129,17 @@ def time_stats(df):
     # display the most common month
     mcm = df['month'].mode()[0]
     if mcm == 1:
-        print('\nThe most commonly month is: January\n')
+        print('\nThe most common month is: January\n')
     elif mcm == 2:
-        print('\nThe most commonly month is: February\n')
+        print('\nThe most common month is: February\n')
     elif mcm == 3:
-        print('\nThe most commonly month is: March\n')
+        print('\nThe most common month is: March\n')
     elif mcm == 4:
-        print('\nThe most commonly month is: April\n')
+        print('\nThe most common month is: April\n')
     elif mcm == 5:
-        print('\nThe most commonly month is: May\n')
+        print('\nThe most common month is: May\n')
     else:
-        print('\nThe most commonly month is: June\n')
+        print('\nThe most common month is: June\n')
 
     # display the most common day of week
     mcdow = df['day_of_week'].mode()[0]
@@ -149,13 +149,13 @@ def time_stats(df):
     # display the most common start hour
     mch = df['Start Time'].dt.hour.mode()[0]
     if mch == 12:
-        print("\nThe most commonly start hour is: {} pm\n".format(mch))
+        print("\nThe most common start hour is: {} pm\n".format(mch))
     elif mch >= 12:
-        print("\nThe most commonly start hour is: {} pm\n".format(mch - 12))
+        print("\nThe most common start hour is: {} pm\n".format(mch - 12))
     elif mch == 24:
-        print("\nThe most commonly start hour is: 12 am\n")
+        print("\nThe most common start hour is: 12 am\n")
     else:
-        print("\nThe most commonly start hour is: {} am\n".format(mch))
+        print("\nThe most common start hour is: {} am\n".format(mch))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -167,13 +167,13 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # display most commonly used start station
+    # display most common start station
     mcst = df['Start Station'].mode()[0]
-    print("\nThe most commonly used start station is: {}\n".format(mcst))
+    print("\nThe most common start station is: {}\n".format(mcst))
 
-    # display most commonly used end station
+    # display most common end station
     mcet = df['End Station'].mode()[0]
-    print("\nThe most commonly used End station is: {}\n".format(mcet))
+    print("\nThe most common end station is: {}\n".format(mcet))
 
     # display most frequent combination of start station and end station trip
     mcstoet = ('FROM ' + '\'' + df['Start Station'] + '\'' +' TO ' + '\'' + df['End Station']+'\'').mode()[0]
@@ -213,15 +213,15 @@ def trip_duration_stats(df):
         m_rem = h_rem % 60
     
         if years != 0:
-            res = print("\nThe {} travel time is calculated to be:\n {} years, {} weeks, {} days, {} hours, {} minutes and {} seconds\n".format(word, years, weeks, days, hours, minutes, m_rem))
+            res = print("\nThe {} travel time is:\n {} years, {} weeks, {} days, {} hours, {} minutes and {} seconds\n".format(word, years, weeks, days, hours, minutes, m_rem))
         elif weeks != 0:
-            res = print("\nThe {} travel time is calculated to be:\n {} weeks, {} days, {} hours, {} minutes and {} seconds\n".format(word, weeks, days, hours, minutes, m_rem))
+            res = print("\nThe {} travel time is:\n {} weeks, {} days, {} hours, {} minutes and {} seconds\n".format(word, weeks, days, hours, minutes, m_rem))
         elif days != 0:
-            res = print("\nThe {} travel time is calculated to be:\n {} days, {} hours, {} minutes and {} seconds\n".format(word, days, hours, minutes, m_rem))
+            res = print("\nThe {} travel time is:\n {} days, {} hours, {} minutes and {} seconds\n".format(word, days, hours, minutes, m_rem))
         elif hours != 0:
-            res = print("\nThe {} travel time is calculated to be:\n {} hours, {} minutes and {} seconds\n".format(word,hours, minutes, m_rem))
+            res = print("\nThe {} travel time is:\n {} hours, {} minutes and {} seconds\n".format(word,hours, minutes, m_rem))
         else:
-            res = print("\nThe {} travel time is calculated to be:\n {} minutes and {} seconds\n".format(word, minutes, m_rem))
+            res = print("\nThe {} travel time is:\n {} minutes and {} seconds\n".format(word, minutes, m_rem))
 
         return res
 
@@ -245,9 +245,9 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    user_counts = df['User Type'].value_counts()
-    sub = user_counts['Subscriber']
-    cus = user_counts['Customer']
+    counts = df['User Type'].value_counts()
+    sub = counts['Subscriber']
+    cus = counts['Customer']
     while True:
         try:
             dep = user_counts['Dependent']
@@ -263,9 +263,9 @@ def user_stats(df):
     # Display counts of gender (there are only Male or Female)
     ### Washington has missing columns for Gender and Birth Year so need to skip this if true.
     try:
-        user_gender = df['Gender'].value_counts()
-        male = user_gender['Male']
-        female = user_gender['Female']
+        gender = df['Gender'].value_counts()
+        male = gender['Male']
+        female = gender['Female']
         nans = df['Gender'].isna().sum()
         print("\nThe number of Male users are {}.\nThe number of Female users are {}.\nThose that did not choose to disclose are {}.\n".format(male, female, nans))
     except:
@@ -290,22 +290,29 @@ def check5(df):
 
     last_idx = 0
     check_next = input('\nWould you like to check the first 5 lines of raw data? Enter yes or no.\n\n')
-    if check_next.lower() != 'yes':
-        print("\nOkay, I hope this helped! :D\n")
+    while check_next.lower() not in ["yes", "no"]:
+        # if the response isn't exactly yes or no, print the statement below and try again
+        print('\nSorry, don\'t recognize it. Please try again\n')
+        check_next = input('\nWould you like to check the first 5 lines of raw data? Enter yes or no.\n\n')
     else:
         while check_next.lower() == 'yes':
             print(df[last_idx: last_idx + 5])
             last_idx += 5
             check_next = input('\nWould you like to check the next 5 lines of raw data? Enter yes or no.\n\n')
-            if check_next.lower() == 'yes':
-                if last_idx < len(df):
-                    continue
-                else:
-                    print("\nWhoops! Looks like that was the last of the raw data! :( \n")
-                    break
+            while check_next.lower() not in ["yes", "no"]:
+                # if the response isn't exactly yes or no, print the statement below and try again
+                print('\nSorry, don\'t recognize it. Please try again\n')
+                check_next = input('\nWould you like to check the next 5 lines of raw data? Enter yes or no.\n\n')
             else:
-                print("\nOkay, I hope this helped! :D\n")
-                break 
+                if check_next.lower() == 'yes':
+                    if last_idx < len(df):
+                        continue
+                    else:
+                        print("\nWhoops! Looks like that was the last of the raw data! :( \n")
+                        break
+                else:
+                    print("\nOkay, I hope this helped! :D\n")
+                    break
 
 def main():
     while True:
@@ -317,10 +324,21 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         check5(df)
+            
 
+            
         restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            print("\nOkay, I hope this helped! :D\n")
+        while restart.lower() not in ["yes", "no"]:
+            # if the response isn't exactly yes or no, print the statement below and try again
+            print('\nSorry, don\'t recognize it. Please try again\n')
+            restart = input('\nWould you like to restart? Enter yes or no.\n')
+        else:
+            if restart.lower() == 'yes':
+                print("\nOkay, let\'s go again!")
+                continue
+            elif restart.lower() == 'no':        
+                print("\nOkay, I hope this helped! :D\n")
+                break
             break
 
 
