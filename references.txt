@@ -1,0 +1,20 @@
+To enhance display to show the data properly
+https://stackoverflow.com/questions/11707586/how-do-i-expand-the-output-display-to-see-more-columns-of-a-pandas-dataframe
+
+How to use value_counts()
+https://pandas.pydata.org/docs/reference/api/pandas.Index.value_counts.html
+
+How to convert daytime data to usable elements
+https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.weekday.html
+https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.day_name.html
+https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.month.html
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html
+https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.Series.dt.weekday_name.html
+
+Convert pd.DataFrames elements to integer values
+https://stackoverflow.com/questions/51865367/cannot-convert-the-series-to-class-int
+
+Question on Knowledge forum:
+https://knowledge.udacity.com/questions/909041
+https://knowledge.udacity.com/questions/721492
+https://knowledge.udacity.com/questions/870111
