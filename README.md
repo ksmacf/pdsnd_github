@@ -5,11 +5,16 @@ November 3rd 2022
 US Bikeshare Data Analysis
 
 ### Description
-Describe what your project is about and what it does
+Create a python script that is interactive and displays various statistics, then ends with a prompt to show the data 5 rows at a time.
 
 ### Files used
-Include the files used
+Python Script:
+	- Kenji MACFARLANE_bikeshare.py
+Data (ignored in commits):
+	- chicago.csv
+	- new_york_city.csv
+	- washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+See detailed list in 'references.txt'
 
