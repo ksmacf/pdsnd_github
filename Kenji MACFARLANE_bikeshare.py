@@ -290,22 +290,29 @@ def check5(df):
 
     last_idx = 0
     check_next = input('\nWould you like to check the first 5 lines of raw data? Enter yes or no.\n\n')
-    if check_next.lower() != 'yes':
-        print("\nOkay, I hope this helped! :D\n")
+    while check_next.lower() not in ["yes", "no"]:
+        # if the response isn't exactly yes or no, print the statement below and try again
+        print('\nSorry, don\'t recognize it. Please try again\n')
+        check_next = input('\nWould you like to check the first 5 lines of raw data? Enter yes or no.\n\n')
     else:
         while check_next.lower() == 'yes':
             print(df[last_idx: last_idx + 5])
             last_idx += 5
             check_next = input('\nWould you like to check the next 5 lines of raw data? Enter yes or no.\n\n')
-            if check_next.lower() == 'yes':
-                if last_idx < len(df):
-                    continue
-                else:
-                    print("\nWhoops! Looks like that was the last of the raw data! :( \n")
-                    break
+            while check_next.lower() not in ["yes", "no"]:
+                # if the response isn't exactly yes or no, print the statement below and try again
+                print('\nSorry, don\'t recognize it. Please try again\n')
+                check_next = input('\nWould you like to check the next 5 lines of raw data? Enter yes or no.\n\n')
             else:
-                print("\nOkay, I hope this helped! :D\n")
-                break 
+                if check_next.lower() == 'yes':
+                    if last_idx < len(df):
+                        continue
+                    else:
+                        print("\nWhoops! Looks like that was the last of the raw data! :( \n")
+                        break
+                else:
+                    print("\nOkay, I hope this helped! :D\n")
+                    break
 
 def main():
     while True:
@@ -317,10 +324,21 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         check5(df)
+            
 
+            
         restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            print("\nOkay, I hope this helped! :D\n")
+        while restart.lower() not in ["yes", "no"]:
+            # if the response isn't exactly yes or no, print the statement below and try again
+            print('\nSorry, don\'t recognize it. Please try again\n')
+            restart = input('\nWould you like to restart? Enter yes or no.\n')
+        else:
+            if restart.lower() == 'yes':
+                print("\nOkay, let\'s go again!")
+                continue
+            elif restart.lower() == 'no':        
+                print("\nOkay, I hope this helped! :D\n")
+                break
             break
 
 
