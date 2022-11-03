@@ -18,3 +18,11 @@ Question on Knowledge forum:
 https://knowledge.udacity.com/questions/909041
 https://knowledge.udacity.com/questions/721492
 https://knowledge.udacity.com/questions/870111
+
+
+For GitHub Project:
+https://wordpress.com/support/markdown-quick-reference/
+https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+https://udacity.github.io/git-styleguide/
+https://itsmetommy.com/2021/09/24/markdown-preview-using-sublime-text/
+https://www.markdownguide.org/basic-syntax/#paragraphs
