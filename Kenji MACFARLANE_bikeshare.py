@@ -245,9 +245,9 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    user_counts = df['User Type'].value_counts()
-    sub = user_counts['Subscriber']
-    cus = user_counts['Customer']
+    counts = df['User Type'].value_counts()
+    sub = counts['Subscriber']
+    cus = counts['Customer']
     while True:
         try:
             dep = user_counts['Dependent']
@@ -263,9 +263,9 @@ def user_stats(df):
     # Display counts of gender (there are only Male or Female)
     ### Washington has missing columns for Gender and Birth Year so need to skip this if true.
     try:
-        user_gender = df['Gender'].value_counts()
-        male = user_gender['Male']
-        female = user_gender['Female']
+        gender = df['Gender'].value_counts()
+        male = gender['Male']
+        female = gender['Female']
         nans = df['Gender'].isna().sum()
         print("\nThe number of Male users are {}.\nThe number of Female users are {}.\nThose that did not choose to disclose are {}.\n".format(male, female, nans))
     except:
